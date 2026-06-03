@@ -1,4 +1,4 @@
-# Safekeep Registry
+# Saferkeep Registry
 
 A community-maintained registry of AI and developer API key providers.
 
