@@ -4,7 +4,7 @@ A community-maintained registry of AI and developer API key providers.
 
 Every entry includes: where to get the key, what it costs, free tier details, the environment variable name, and a health check endpoint for validation.
 
-Used by [Safekeep](https://github.com/saferkeep/saferkeep) to power the **Keys** setup page — so users see a guided, plain-English list of providers instead of hunting through docs.
+Used by [Saferkeep](https://github.com/saferkeep/saferkeep) to power the **Keys** setup page — so users see a guided, plain-English list of providers instead of hunting through docs.
 
 ## Install
 
