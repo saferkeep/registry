@@ -1,0 +1,28 @@
+name: Validate Registry
+
+on:
+  pull_request:
+    paths:
+      - 'providers.json'
+      - 'schema.json'
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install validator
+        run: npm install -g ajv-cli
+
+      - name: Validate providers.json against schema
+        run: ajv validate -s schema.json -d providers.json --strict=false
+
+      - name: Check required fields and broken alternative refs
+        run: node scripts/validate.js

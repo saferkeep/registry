@@ -1,0 +1,142 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Safekeep Provider Registry",
+  "description": "Schema for providers.json — community-maintained AI provider key metadata",
+  "type": "object",
+  "additionalProperties": {
+    "oneOf": [
+      {
+        "description": "Internal metadata key (prefixed with _)",
+        "type": "array"
+      },
+      {
+        "$ref": "#/definitions/Provider"
+      }
+    ]
+  },
+  "definitions": {
+    "Provider": {
+      "type": "object",
+      "required": [
+        "name",
+        "capability_group",
+        "category_label",
+        "capability",
+        "env_var",
+        "get_key_url",
+        "docs_url",
+        "requires_card",
+        "expires",
+        "alternatives"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Human-readable provider name"
+        },
+        "capability_group": {
+          "type": "string",
+          "enum": ["llm", "search", "embeddings", "tts", "stt", "image", "storage", "code", "scraping", "data", "communication"],
+          "description": "Capability group this provider belongs to"
+        },
+        "category_label": {
+          "type": "string",
+          "description": "Human-readable category label shown in the UI"
+        },
+        "capability": {
+          "type": "string",
+          "description": "One sentence — what does this provider do for an AI app?"
+        },
+        "env_var": {
+          "type": "string",
+          "description": "Primary environment variable name for this key"
+        },
+        "env_var_secondary": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Additional env vars required (e.g. AWS key pair)"
+        },
+        "format_hint": {
+          "type": ["string", "null"],
+          "description": "Key prefix or pattern hint, e.g. 'sk-ant-...'"
+        },
+        "format_regex": {
+          "type": ["string", "null"],
+          "description": "Regex to validate key format client-side"
+        },
+        "get_key_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Direct URL to the page where users create or copy their key"
+        },
+        "docs_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to the authentication/API key documentation"
+        },
+        "health_check_url": {
+          "type": ["string", "null"],
+          "description": "Endpoint to call to verify the key is valid"
+        },
+        "health_check_method": {
+          "type": ["string", "null"],
+          "enum": ["GET", "POST", null]
+        },
+        "health_check_headers": {
+          "type": "object",
+          "description": "Headers to include in health check. Use {key} as placeholder for the API key."
+        },
+        "free_tier": {
+          "type": ["string", "null"],
+          "description": "Plain-English description of the free tier, or null if none"
+        },
+        "free_tier_limit": {
+          "type": ["number", "null"],
+          "description": "Numeric limit of the free tier"
+        },
+        "free_tier_unit": {
+          "type": ["string", "null"],
+          "description": "Unit for free_tier_limit: searches, tokens, requests, etc."
+        },
+        "free_tier_resets": {
+          "type": ["string", "null"],
+          "enum": ["monthly", "daily", "never", null]
+        },
+        "pricing_note": {
+          "type": ["string", "null"],
+          "description": "One sentence on paid pricing"
+        },
+        "requires_card": {
+          "type": "boolean",
+          "description": "True if a credit card is required even for the free tier"
+        },
+        "expires": {
+          "type": "boolean",
+          "description": "True if keys expire by default"
+        },
+        "alternatives": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Other provider slugs in the same capability_group that serve the same purpose"
+        },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "accessible_outside_china": {
+          "type": "boolean",
+          "description": "For Chinese providers: true if API works from non-China IP without VPN"
+        },
+        "english_portal": {
+          "type": "boolean",
+          "description": "For Chinese providers: true if key management console is in English"
+        },
+        "_research_note": {
+          "type": "string",
+          "description": "Internal note for maintainers — not shown in UI"
+        }
+      }
+    }
+  }
+}
