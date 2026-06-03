@@ -4,16 +4,16 @@ A community-maintained registry of AI and developer API key providers.
 
 Every entry includes: where to get the key, what it costs, free tier details, the environment variable name, and a health check endpoint for validation.
 
-Used by [Safekeep](https://github.com/safekeep/safekeep) to power the **Keys** setup page — so users see a guided, plain-English list of providers instead of hunting through docs.
+Used by [Safekeep](https://github.com/saferkeep/saferkeep) to power the **Keys** setup page — so users see a guided, plain-English list of providers instead of hunting through docs.
 
 ## Install
 
 ```bash
-npm install @safekeep/registry
+npm install @saferkeep/registry
 ```
 
 ```typescript
-import { getProvider, getProvidersByGroup, getFreeProviders } from '@safekeep/registry'
+import { getProvider, getProvidersByGroup, getFreeProviders } from '@saferkeep/registry'
 
 // Get a specific provider
 const anthropic = getProvider('anthropic')
@@ -37,7 +37,7 @@ const free = getFreeProviders()
 | 🎙️ Speech | _(coming soon)_ |
 | 🖼️ Image | _(coming soon)_ |
 
-More groups arriving as research PRs land. See [open issues](https://github.com/safekeep/registry/issues) to contribute.
+More groups arriving as research PRs land. See [open issues](https://github.com/saferkeep/registry/issues) to contribute.
 
 ## Add a provider
 

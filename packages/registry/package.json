@@ -1,5 +1,5 @@
 {
-  "name": "@safekeep/registry",
+  "name": "@saferkeep/registry",
   "version": "0.1.0",
   "description": "Community-maintained registry of AI provider API key metadata",
   "type": "module",
@@ -28,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/safekeep/registry"
+    "url": "https://github.com/saferkeep/registry"
   },
   "license": "MIT"
 }
