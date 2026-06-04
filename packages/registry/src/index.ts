@@ -1,8 +1,8 @@
 /**
- * @saferkeep/registry — typed access to the Safekeep provider registry.
+ * @saferkeys/registry — typed access to the Saferkeys provider registry.
  *
  * Usage:
- *   import { getProvider, getProvidersByGroup, providers } from '@saferkeep/registry'
+ *   import { getProvider, getProvidersByGroup, providers } from '@saferkeys/registry'
  *
  *   const p = getProvider('anthropic')
  *   p.get_key_url   // "https://console.anthropic.com/settings/keys"
@@ -86,7 +86,7 @@ function loadRegistry(): ProviderMap {
     }
     return result
   } catch (err) {
-    throw new Error(`@saferkeep/registry: could not load providers.json — ${err}`)
+    throw new Error(`@saferkeys/registry: could not load providers.json — ${err}`)
   }
 }
 
@@ -104,7 +104,7 @@ export const providerSlugs: ProviderSlug[] = Object.keys(providers)
  */
 export function getProvider(slug: ProviderSlug): Provider {
   const p = providers[slug]
-  if (!p) throw new Error(`@saferkeep/registry: unknown provider slug "${slug}"`)
+  if (!p) throw new Error(`@saferkeys/registry: unknown provider slug "${slug}"`)
   return p
 }
 
